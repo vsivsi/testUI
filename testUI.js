@@ -25,10 +25,6 @@ if (Meteor.isClient) {
         console.log("You pressed the button");
     }
   });
-
-  // Meteor.startup(function () {
-  //   UI.insert(UI.renderWithData(Template.hello, listOfStuff), document.body);
-  // });
 }
 
 if (Meteor.isServer) {
