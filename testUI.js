@@ -7,7 +7,6 @@ if (Meteor.isClient) {
   };
 
   Template.hello.listItem = function () {
-    console.log("Item:", this, UI._parentData(1));
     return this;
   };
 
