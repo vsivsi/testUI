@@ -1,14 +1,21 @@
-if (Meteor.isClient) {
+listOfStuff = { label: 'Oh hai!', list: ['A','B','C'] };
 
-  listOfStuff = ['A','B','C'];
+Router.map(function () {
+  this.route('hello',{ path: '/', data: listOfStuff });
+});
+
+if (Meteor.isClient) {
 
   Template.hello.greeting = function () {
     return "Welcome to testUI.";
   };
 
   Template.hello.listItem = function () {
-    console.log("Item:", this, UI._parentData(1));
     return this;
+  };
+
+  Template.hello.listItemLabel = function () {
+    return UI._parentData(1).label;
   };
 
   Template.hello.events({
@@ -19,9 +26,9 @@ if (Meteor.isClient) {
     }
   });
 
-  Meteor.startup(function () {
-    UI.insert(UI.renderWithData(Template.hello, { list: listOfStuff }), document.body);
-  });
+  // Meteor.startup(function () {
+  //   UI.insert(UI.renderWithData(Template.hello, listOfStuff), document.body);
+  // });
 }
 
 if (Meteor.isServer) {
